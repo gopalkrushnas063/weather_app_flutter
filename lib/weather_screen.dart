@@ -16,11 +16,29 @@ class WeatherScreen extends StatelessWidget {
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: () {
-              
-            }, 
+            onPressed: () {},
             icon: const Icon(Icons.refresh),
           )
+        ],
+      ),
+      body: Column(
+        children: [
+          // main card
+          const Placeholder(
+            fallbackHeight: 250,
+          ),
+
+          const SizedBox(height: 20),
+          //weather forecast card
+          const Placeholder(
+            fallbackHeight: 150,
+          ),
+
+          const SizedBox(height: 20),
+          //additional information card
+          const Placeholder(
+            fallbackHeight: 150,
+          ),
         ],
       ),
     );
