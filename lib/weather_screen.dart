@@ -89,11 +89,31 @@ class WeatherScreen extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  HourlyForecastItem(),
-                  HourlyForecastItem(),
-                  HourlyForecastItem(),
-                  HourlyForecastItem(),
-                  HourlyForecastItem(),
+                  HourlyForecastItem(
+                    time: '03:23',
+                    temp: '398.9',
+                    icon: Icons.cloud,
+                  ),
+                  HourlyForecastItem(
+                    time: '09:23',
+                    temp: '234.9',
+                    icon: Icons.sunny,
+                  ),
+                  HourlyForecastItem(
+                    time: '06:23',
+                    temp: '215.9',
+                    icon: Icons.sunny_snowing,
+                  ),
+                  HourlyForecastItem(
+                    time: '05:23',
+                    temp: '398.9',
+                    icon: Icons.cloudy_snowing,
+                  ),
+                  HourlyForecastItem(
+                    time: '03:23',
+                    temp: '398.9',
+                    icon: Icons.sunny_snowing,
+                  ),
                 ],
               ),
             ),
@@ -115,9 +135,21 @@ class WeatherScreen extends StatelessWidget {
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                AdditionalInfoItem(),
-                AdditionalInfoItem(),
-                AdditionalInfoItem(),
+                AdditionalInfoItem(
+                  icon: Icons.water_drop,
+                  label: 'Humidity',
+                  value: '91',
+                ),
+                AdditionalInfoItem(
+                  icon: Icons.beach_access,
+                  label: 'Pressure',
+                  value: '1000',
+                ),
+                AdditionalInfoItem(
+                  icon: Icons.air,
+                  label: 'Wind Speed',
+                  value: '7.5',
+                ),
               ],
             ),
           ],
@@ -126,4 +158,3 @@ class WeatherScreen extends StatelessWidget {
     );
   }
 }
-
