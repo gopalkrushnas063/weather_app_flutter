@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
 class AdditionalInfoItem extends StatelessWidget {
-  final IconData icon;
+  final String icon;
   final String label;
   final String value;
-
 
   const AdditionalInfoItem({
     super.key,
@@ -17,9 +16,10 @@ class AdditionalInfoItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Icon(
-          icon,
-          size: 32,
+       Image.asset(
+          icon, // Use the asset path for the image
+          width: 32,
+          height: 32,
         ),
         const SizedBox(height: 8),
         Text(label),

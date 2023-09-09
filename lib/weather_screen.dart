@@ -43,8 +43,8 @@ class WeatherScreen extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color(0xFF59469D), // Define the first color
-              Color(0xFF643D67), // Define the second color
+              Color.fromARGB(255, 80, 64, 139), // Define the first color
+              Color.fromARGB(255, 93, 44, 95), // Define the second color
             ], // Define your gradient colors
           ),
         ),
@@ -56,40 +56,36 @@ class WeatherScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: Card(
-                  elevation: 10,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),
                   ),
-                  color: const Color(0xFF331866),
+                  color: const Color.fromARGB(255, 32, 5, 82),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16),
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                      child: const Padding(
-                        padding: EdgeInsets.all(16.0),
-                        child: Column(
-                          children: [
-                            Text(
-                              '300K',
-                              style: TextStyle(
-                                fontSize: 32,
-                                fontWeight: FontWeight.bold,
-                              ),
+                    child: const Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          Text(
+                            '300K',
+                            style: TextStyle(
+                              fontSize: 32,
+                              fontWeight: FontWeight.bold,
                             ),
-                            SizedBox(height: 16),
-                            Icon(
-                              Icons.cloud,
-                              size: 64,
+                          ),
+                          SizedBox(height: 16),
+                          Icon(
+                            Icons.cloud,
+                            size: 64,
+                          ),
+                          SizedBox(height: 16),
+                          Text(
+                            'Rain',
+                            style: TextStyle(
+                              fontSize: 20,
                             ),
-                            SizedBox(height: 16),
-                            Text(
-                              'Rain',
-                              style: TextStyle(
-                                fontSize: 20,
-                              ),
-                            )
-                          ],
-                        ),
+                          )
+                        ],
                       ),
                     ),
                   ),
@@ -160,18 +156,18 @@ class WeatherScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   AdditionalInfoItem(
-                    icon: Icons.water_drop,
+                    icon: 'assets/images/humidity.png', 
                     label: 'Humidity',
                     value: '91',
                   ),
                   AdditionalInfoItem(
-                    icon: Icons.beach_access,
-                    label: 'Pressure',
+                    icon:'assets/images/wind.png', 
+                    label: 'Wind Speed',
                     value: '1000',
                   ),
                   AdditionalInfoItem(
-                    icon: Icons.air,
-                    label: 'Wind Speed',
+                    icon: 'assets/images/rain.png', 
+                    label: 'Pressure',
                     value: '7.5',
                   ),
                 ],
