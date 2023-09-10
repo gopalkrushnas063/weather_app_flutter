@@ -3,9 +3,33 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:wheather_app_flutter/addition_info_item.dart';
 import 'package:wheather_app_flutter/hourly_forecast_item.dart';
+import 'package:http/http.dart' as http;
+import 'package:wheather_app_flutter/secrets.dart';
 
-class WeatherScreen extends StatelessWidget {
+class WeatherScreen extends StatefulWidget {
   const WeatherScreen({super.key});
+
+  @override
+  State<WeatherScreen> createState() => _WeatherScreenState();
+}
+
+class _WeatherScreenState extends State<WeatherScreen> {
+  @override
+  void initState() {
+    super.initState();
+    getCurrentWeather();
+  }
+
+  Future getCurrentWeather() async {
+    String cityName = 'London';
+
+    final response = await http.get(
+      Uri.parse(
+          'https://api.openweathermap.org/data/2.5/weather?q=$cityName&APPID=$openWeatherAPIKey'),
+    );
+
+    print(response.body);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -156,17 +180,17 @@ class WeatherScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   AdditionalInfoItem(
-                    icon: 'assets/images/humidity.png', 
+                    icon: 'assets/images/humidity.png',
                     label: 'Humidity',
                     value: '91',
                   ),
                   AdditionalInfoItem(
-                    icon:'assets/images/wind.png', 
+                    icon: 'assets/images/wind.png',
                     label: 'Wind Speed',
                     value: '1000',
                   ),
                   AdditionalInfoItem(
-                    icon: 'assets/images/rain.png', 
+                    icon: 'assets/images/rain.png',
                     label: 'Pressure',
                     value: '7.5',
                   ),
