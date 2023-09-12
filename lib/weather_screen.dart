@@ -16,13 +16,7 @@ class WeatherScreen extends StatefulWidget {
 }
 
 class _WeatherScreenState extends State<WeatherScreen> {
-  double temp = 0;
-
-  @override
-  void initState() {
-    super.initState();
-    getCurrentWeather();
-  }
+  late Future<Map<String, dynamic>> weather;
 
   Future<Map<String, dynamic>> getCurrentWeather() async {
     try {
@@ -43,6 +37,12 @@ class _WeatherScreenState extends State<WeatherScreen> {
     } catch (e) {
       throw e.toString();
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    weather = getCurrentWeather();
   }
 
   @override
@@ -70,13 +70,17 @@ class _WeatherScreenState extends State<WeatherScreen> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                
+              });
+            },
             icon: const Icon(Icons.refresh),
           )
         ],
       ),
       body: FutureBuilder(
-        future: getCurrentWeather(),
+        future: weather,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
@@ -170,7 +174,10 @@ class _WeatherScreenState extends State<WeatherScreen> {
                     ),
                   ),
                   const SizedBox(height: 8),
+                  //----------------------------
                   //weather forecast card
+                  //----------------------------
+
                   // SingleChildScrollView(
                   //   scrollDirection: Axis.horizontal,
                   //   child: Row(
@@ -188,6 +195,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   //   ),
                   // ),
 
+                  //----------------------------------------
+                  // Using ListView.builder for lazy loading
+                  //----------------------------------------
                   SizedBox(
                     height: 120,
                     child: ListView.builder(
