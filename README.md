@@ -24,7 +24,7 @@ To use this app, you will need to obtain an API key from OpenWeather. Follow the
    git clone https://github.com/yourusername/flutter-weather-app.git
    ```
 
-2 **Navigate to the project** directory:
+2. **Navigate to the project** directory:
 
   ```
   cd flutter-weather-app
