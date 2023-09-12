@@ -25,7 +25,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
   Future<Map<String, dynamic>> getCurrentWeather() async {
     try {
-      String cityName = 'Bhubaneswar';
+      String cityName = 'London';
 
       final response = await http.get(
         Uri.parse(
@@ -161,7 +161,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   const Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      'Weather Forecast',
+                      'Hourly Forecast',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -170,35 +170,19 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   ),
                   const SizedBox(height: 8),
                   //weather forecast card
-                  const SingleChildScrollView(
+                  SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        HourlyForecastItem(
-                          time: '03:23',
-                          temp: '398.9',
-                          icon: Icons.cloud,
-                        ),
-                        HourlyForecastItem(
-                          time: '09:23',
-                          temp: '234.9',
-                          icon: Icons.sunny,
-                        ),
-                        HourlyForecastItem(
-                          time: '06:23',
-                          temp: '215.9',
-                          icon: Icons.sunny_snowing,
-                        ),
-                        HourlyForecastItem(
-                          time: '05:23',
-                          temp: '398.9',
-                          icon: Icons.cloudy_snowing,
-                        ),
-                        HourlyForecastItem(
-                          time: '03:23',
-                          temp: '398.9',
-                          icon: Icons.sunny_snowing,
-                        ),
+                        for (int i = 0; i < 5; i++)
+                          HourlyForecastItem(
+                            time: data['list'][i + 1]['dt'].toString(),
+                            temp:
+                                data['list'][i + 1]['main']['temp'].toString(),
+                            icon: data['list'][i + 1]['weather'][0]['main'] == 'Clouds' || data['list'][i + 1]['weather'][0]['main'] == 'Rain'
+                                ? Icons.cloud
+                                : Icons.sunny,
+                          ),
                       ],
                     ),
                   ),
