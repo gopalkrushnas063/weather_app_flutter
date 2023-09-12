@@ -25,7 +25,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
   Future<Map<String, dynamic>> getCurrentWeather() async {
     try {
-      String cityName = 'London';
+      String cityName = 'Bhubaneswar';
 
       final response = await http.get(
         Uri.parse(
@@ -96,6 +96,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
           final currentTemp = currenWeattherData['main']['temp'];
           final currentSky = currenWeattherData['weather'][0]['main'];
+          final currentPresure = currenWeattherData['main']['pressure'];
+          final currentHumidity = currenWeattherData['main']['humidity'];
+          final currentWindSpeed = currenWeattherData['wind']['speed'];
 
           return Container(
             decoration: const BoxDecoration(
@@ -214,23 +217,23 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   ),
 
                   const SizedBox(height: 16),
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       AdditionalInfoItem(
                         icon: 'assets/images/humidity.png',
                         label: 'Humidity',
-                        value: '91',
+                        value: currentHumidity.toString(),
                       ),
                       AdditionalInfoItem(
                         icon: 'assets/images/wind.png',
                         label: 'Wind Speed',
-                        value: '1000',
+                        value: currentWindSpeed.toString(),
                       ),
                       AdditionalInfoItem(
                         icon: 'assets/images/rain.png',
                         label: 'Pressure',
-                        value: '7.5',
+                        value: currentPresure.toString(),
                       ),
                     ],
                   ),
