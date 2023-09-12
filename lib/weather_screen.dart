@@ -35,7 +35,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
       final data = jsonDecode(response.body);
 
       if (data['cod'] != '200') {
-        throw 'An unexpexted error occurred';
+        throw data['message'];
       }
 
       return data;
@@ -79,7 +79,17 @@ class _WeatherScreenState extends State<WeatherScreen> {
         future: getCurrentWeather(),
         builder: (context, snapshot) {
           print(snapshot);
-          print(snapshot.runtimeType);
+
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator();
+          }
+
+          if (snapshot.hasError) {
+            return Text(snapshot.error.toString());
+          }
+
+
+          
           return Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
