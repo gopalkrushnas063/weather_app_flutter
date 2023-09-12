@@ -23,9 +23,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
     getCurrentWeather();
   }
 
-  Future getCurrentWeather() async {
+  Future<Map<String, dynamic>> getCurrentWeather() async {
     try {
-      String cityName = 'Bhubaneswar';
+      String cityName = 'London';
 
       final response = await http.get(
         Uri.parse(
@@ -35,11 +35,10 @@ class _WeatherScreenState extends State<WeatherScreen> {
       final data = jsonDecode(response.body);
 
       if (data['cod'] != '200') {
-        throw data['message'];
+        throw 'An unexpexted error occurred';
       }
 
       return data;
-      //data['list'][0]['main']['temp'];
     } catch (e) {
       throw e.toString();
     }
@@ -78,18 +77,26 @@ class _WeatherScreenState extends State<WeatherScreen> {
       body: FutureBuilder(
         future: getCurrentWeather(),
         builder: (context, snapshot) {
-          print(snapshot);
-
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const CircularProgressIndicator();
+            return const Center(
+              child: CircularProgressIndicator.adaptive(),
+            );
           }
 
           if (snapshot.hasError) {
-            return Text(snapshot.error.toString());
+            return Center(
+              child: Text(
+                snapshot.error.toString(),
+              ),
+            );
           }
 
+          final data = snapshot.data!;
+          final currenWeattherData = data['list'][0];
 
-          
+          final currentTemp = currenWeattherData['main']['temp'];
+          final currentSky = currenWeattherData['weather'][0]['main'];
+
           return Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
@@ -120,21 +127,23 @@ class _WeatherScreenState extends State<WeatherScreen> {
                           child: Column(
                             children: [
                               Text(
-                                '301 K',
+                                '$currentTemp K',
                                 style: const TextStyle(
                                   fontSize: 32,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               const SizedBox(height: 16),
-                              const Icon(
-                                Icons.cloud,
+                              Icon(
+                                currentSky == 'Clouds' || currentSky == 'Rain'
+                                    ? Icons.cloud
+                                    : Icons.sunny,
                                 size: 64,
                               ),
                               const SizedBox(height: 16),
-                              const Text(
-                                'Rain',
-                                style: TextStyle(
+                              Text(
+                                currentSky,
+                                style: const TextStyle(
                                   fontSize: 20,
                                 ),
                               )
