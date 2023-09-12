@@ -26,9 +26,9 @@ To use this app, you will need to obtain an API key from OpenWeather. Follow the
 
 2. **Navigate to the project** directory:
 
-  ```
-  cd flutter-weather-app
-  ```
+     ```
+     cd flutter-weather-app
+     ```
     
 3. Create a file named **.env** in the root directory and add your **OpenWeather API key**:
     ``` 
