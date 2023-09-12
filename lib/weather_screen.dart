@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:wheather_app_flutter/addition_info_item.dart';
 import 'package:wheather_app_flutter/hourly_forecast_item.dart';
 import 'package:http/http.dart' as http;
@@ -170,20 +171,42 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   ),
                   const SizedBox(height: 8),
                   //weather forecast card
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        for (int i = 0; i < 5; i++)
-                          HourlyForecastItem(
-                            time: data['list'][i + 1]['dt'].toString(),
-                            temp:
-                                data['list'][i + 1]['main']['temp'].toString(),
-                            icon: data['list'][i + 1]['weather'][0]['main'] == 'Clouds' || data['list'][i + 1]['weather'][0]['main'] == 'Rain'
-                                ? Icons.cloud
-                                : Icons.sunny,
-                          ),
-                      ],
+                  // SingleChildScrollView(
+                  //   scrollDirection: Axis.horizontal,
+                  //   child: Row(
+                  //     children: [
+                  //       for (int i = 0; i < 39; i++)
+                  //         HourlyForecastItem(
+                  //           time: data['list'][i + 1]['dt'].toString(),
+                  //           temp:
+                  //               data['list'][i + 1]['main']['temp'].toString(),
+                  //           icon: data['list'][i + 1]['weather'][0]['main'] == 'Clouds' || data['list'][i + 1]['weather'][0]['main'] == 'Rain'
+                  //               ? Icons.cloud
+                  //               : Icons.sunny,
+                  //         ),
+                  //     ],
+                  //   ),
+                  // ),
+
+                  SizedBox(
+                    height: 120,
+                    child: ListView.builder(
+                      itemCount: 5,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        final hourlyForecast = data['list'][index + 1];
+                        final hourlyIcon =
+                            data['list'][index + 1]['weather'][0]['main'];
+
+                        final time = DateTime.parse(hourlyForecast['dt_txt']);
+                        return HourlyForecastItem(
+                          time: DateFormat.Hm().format(time),
+                          temp: hourlyForecast['main']['temp'].toString(),
+                          icon: hourlyIcon == 'Clouds' || hourlyIcon == 'Rain'
+                              ? Icons.cloud
+                              : Icons.sunny,
+                        );
+                      },
                     ),
                   ),
 
