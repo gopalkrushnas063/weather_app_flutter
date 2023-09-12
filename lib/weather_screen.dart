@@ -142,11 +142,12 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                 ),
                               ),
                               const SizedBox(height: 16),
-                              Icon(
+                              Image.asset(
                                 currentSky == 'Clouds' || currentSky == 'Rain'
-                                    ? Icons.cloud
-                                    : Icons.sunny,
-                                size: 64,
+                                    ? 'assets/images/cloudy.png'
+                                    : 'assets/images/sunny.png',
+                                width: 64,
+                                height: 64,
                               ),
                               const SizedBox(height: 16),
                               Text(
@@ -213,8 +214,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
                           time: DateFormat.Hm().format(time),
                           temp: hourlyForecast['main']['temp'].toString(),
                           icon: hourlyIcon == 'Clouds' || hourlyIcon == 'Rain'
-                              ? Icons.cloud
-                              : Icons.sunny,
+                              ? 'assets/images/cloudy.png'
+                              : 'assets/images/sunny.png',
                         );
                       },
                     ),

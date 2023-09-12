@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class HourlyForecastItem extends StatelessWidget {
   final String time;
   final String temp;
-  final IconData icon;
+  final String icon;
 
   const HourlyForecastItem({
     super.key,
@@ -34,9 +34,8 @@ class HourlyForecastItem extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 8),
-            Icon(
-              icon,
-              size: 32,
+            Image.asset(
+              icon,height: 32,
             ),
             const SizedBox(height: 8),
             Text(
