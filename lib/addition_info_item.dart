@@ -16,17 +16,23 @@ class AdditionalInfoItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-       Image.asset(
+        Image.asset(
           icon, // Use the asset path for the image
           width: 32,
           height: 32,
         ),
         const SizedBox(height: 8),
-        Text(label),
+        Text(
+          label,
+          style: const TextStyle(
+            fontFamily: 'Overpass',
+          ),
+        ),
         const SizedBox(height: 8),
         Text(
           value,
           style: const TextStyle(
+            fontFamily: 'Overpass',
             fontSize: 16,
             fontWeight: FontWeight.bold,
           ),

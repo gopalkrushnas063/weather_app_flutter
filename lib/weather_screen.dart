@@ -137,53 +137,69 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),
-                      color: Colors.transparent,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(16),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Column(
-                            children: [
-                              Text(
-                                '$currentTemp K , Bhubaneswar',
-                                style: const TextStyle(
-                                  fontFamily: 'Overpass',
-                                  fontSize: 32,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white, // Text color
-                                  shadows: [
-                                    Shadow(
-                                      color: Colors.black, // Shadow color
-                                      offset: Offset(3, 3), // Shadow offset
-                                      blurRadius: 20, // Shadow blur radius
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(height: 16),
-                              Image.asset(
-                                currentSky == 'Clouds' || currentSky == 'Rain'
-                                    ? 'assets/images/cloudy.png'
-                                    : 'assets/images/sunny.png',
-                                width: 64,
-                                height: 64,
-                              ),
-                              const SizedBox(height: 16),
-                              Text(
-                                currentSky,
-                                style: const TextStyle(
-                                  fontFamily: 'Overpass',
-                                  fontSize: 20,
-                                  shadows: [
-                                    Shadow(
-                                      color: Colors.black, // Shadow color
-                                      offset: Offset(3, 3), // Shadow offset
-                                      blurRadius: 20, // Shadow blur radius
-                                    ),
-                                  ],
-                                ),
-                              )
+                      elevation: 10, // You can adjust the elevation as needed
+                      margin: const EdgeInsets.all(16), // Add margin as needed
+                      color: Colors
+                          .transparent, // Set the card's color to transparent
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          gradient: const LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [
+                              Color(0xFF4A91FF), // Starting color (#4A91FF)
+                              Color(0xFF47BFDF), // Ending color (#47BFDF)
                             ],
+                          ),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Column(
+                              children: [
+                                Text(
+                                  '$currentTemp K , Bhubaneswar',
+                                  style: const TextStyle(
+                                    fontFamily: 'Overpass',
+                                    fontSize: 32,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white, // Text color
+                                    shadows: [
+                                      Shadow(
+                                        color: Colors.black, // Shadow color
+                                        offset: Offset(3, 3), // Shadow offset
+                                        blurRadius: 20, // Shadow blur radius
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(height: 16),
+                                Image.asset(
+                                  currentSky == 'Clouds' || currentSky == 'Rain'
+                                      ? 'assets/images/cloudy.png'
+                                      : 'assets/images/sunny.png',
+                                  width: 64,
+                                  height: 64,
+                                ),
+                                const SizedBox(height: 16),
+                                Text(
+                                  currentSky,
+                                  style: const TextStyle(
+                                    fontFamily: 'Overpass',
+                                    fontSize: 20,
+                                    shadows: [
+                                      Shadow(
+                                        color: Colors.black, // Shadow color
+                                        offset: Offset(3, 3), // Shadow offset
+                                        blurRadius: 20, // Shadow blur radius
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -196,6 +212,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                     child: Text(
                       'Hourly Forecast',
                       style: TextStyle(
+                        fontFamily: 'Overpass',
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                         shadows: [
@@ -262,6 +279,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                     child: Text(
                       'Additional Information',
                       style: TextStyle(
+                        fontFamily: 'Overpass',
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                         shadows: [
