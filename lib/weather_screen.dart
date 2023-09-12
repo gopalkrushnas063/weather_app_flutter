@@ -72,7 +72,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
           IconButton(
             onPressed: () {
               setState(() {
-                
+                weather = getCurrentWeather();
               });
             },
             icon: const Icon(Icons.refresh),
