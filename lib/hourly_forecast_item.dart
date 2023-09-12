@@ -15,18 +15,19 @@ class HourlyForecastItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 10,
       color: Colors.transparent,
       child: Container(
         width: 100,
         padding: const EdgeInsets.all(8.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          gradient: LinearGradient(
+          gradient: const LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              Color(0xFF4A91FF), // Starting color (#4A91FF)
-              Color(0xFF47BFDF), // Ending color (#47BFDF)
+              Colors.white38, // Starting color (#4A91FF)
+              Colors.white38, // Ending color (#47BFDF)
             ],
           ),
         ),

@@ -139,8 +139,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       ),
                       elevation: 10, // You can adjust the elevation as needed
                       margin: const EdgeInsets.all(16), // Add margin as needed
-                      color: Colors
-                          .transparent, // Set the card's color to transparent
+                      color:
+                          Colors.white10, // Set the card's color to transparent
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
@@ -148,8 +148,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                             colors: [
-                              Color(0xFF4A91FF), // Starting color (#4A91FF)
-                              Color(0xFF47BFDF), // Ending color (#47BFDF)
+                              Colors.white38, // Starting color (#4A91FF)
+                              Colors.white38, // Ending color (#47BFDF)
                             ],
                           ),
                         ),
@@ -176,12 +176,29 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                   ),
                                 ),
                                 const SizedBox(height: 16),
-                                Image.asset(
-                                  currentSky == 'Clouds' || currentSky == 'Rain'
-                                      ? 'assets/images/cloudy.png'
-                                      : 'assets/images/sunny.png',
-                                  width: 64,
-                                  height: 64,
+                                Container(
+                                  width: 64, // Adjust the width as needed
+                                  height: 64, // Adjust the height as needed
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape
+                                        .circle, // Make it a circular container
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(
+                                            0.4), // Shadow color and opacity
+                                        offset: const Offset(0, 4), // Shadow offset
+                                        blurRadius: 8, // Shadow blur radius
+                                      ),
+                                    ],
+                                  ),
+                                  child: Image.asset(
+                                    currentSky == 'Clouds' ||
+                                            currentSky == 'Rain'
+                                        ? 'assets/images/cloudy.png'
+                                        : 'assets/images/sunny.png',
+                                    width: 64,
+                                    height: 64,
+                                  ),
                                 ),
                                 const SizedBox(height: 16),
                                 Text(
