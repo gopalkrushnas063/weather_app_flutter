@@ -82,6 +82,11 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   # fonts:
+  fonts:
+  - family: Overpass
+    fonts:
+      - asset: assets/Overpass-VariableFont_wght.ttf  # Replace with the actual file path
+
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

@@ -20,7 +20,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
   Future<Map<String, dynamic>> getCurrentWeather() async {
     try {
-      String cityName = 'London';
+      String cityName = 'Bhubaneswar';
 
       final response = await http.get(
         Uri.parse(
@@ -52,7 +52,17 @@ class _WeatherScreenState extends State<WeatherScreen> {
         title: const Text(
           'Weather App',
           style: TextStyle(
+            fontFamily: 'Overpass',
+            fontSize: 32,
             fontWeight: FontWeight.bold,
+            color: Colors.white, // Text color
+            shadows: [
+              Shadow(
+                color: Colors.black, // Shadow color
+                offset: Offset(2, 3), // Shadow offset
+                blurRadius: 20, // Shadow blur radius
+              ),
+            ],
           ),
         ),
         centerTitle: true,
@@ -62,9 +72,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Color(0xFF331866), // Define the first color
-                Color(0xFF331866), // Define the second color
-              ],
+                Color(0xFF4A91FF), // Use the new color #47BFDF
+                Color(0xFF47BFDF), // Define the first color
+              ], // Define your gradient colors
             ),
           ),
         ),
@@ -111,8 +121,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Color.fromARGB(255, 80, 64, 139), // Define the first color
-                  Color.fromARGB(255, 93, 44, 95), // Define the second color
+                  Color(0xFF47BFDF), // Define the first color
+                  Color(0xFF4A91FF), // Use the new color #47BFDF
                 ], // Define your gradient colors
               ),
             ),
@@ -127,7 +137,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),
-                      color: const Color.fromARGB(255, 32, 5, 82),
+                      color: Colors.transparent,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(16),
                         child: Padding(
@@ -135,10 +145,19 @@ class _WeatherScreenState extends State<WeatherScreen> {
                           child: Column(
                             children: [
                               Text(
-                                '$currentTemp K',
+                                '$currentTemp K , Bhubaneswar',
                                 style: const TextStyle(
+                                  fontFamily: 'Overpass',
                                   fontSize: 32,
                                   fontWeight: FontWeight.bold,
+                                  color: Colors.white, // Text color
+                                  shadows: [
+                                    Shadow(
+                                      color: Colors.black, // Shadow color
+                                      offset: Offset(3, 3), // Shadow offset
+                                      blurRadius: 20, // Shadow blur radius
+                                    ),
+                                  ],
                                 ),
                               ),
                               const SizedBox(height: 16),
@@ -153,7 +172,15 @@ class _WeatherScreenState extends State<WeatherScreen> {
                               Text(
                                 currentSky,
                                 style: const TextStyle(
+                                  fontFamily: 'Overpass',
                                   fontSize: 20,
+                                  shadows: [
+                                    Shadow(
+                                      color: Colors.black, // Shadow color
+                                      offset: Offset(3, 3), // Shadow offset
+                                      blurRadius: 20, // Shadow blur radius
+                                    ),
+                                  ],
                                 ),
                               )
                             ],
@@ -171,6 +198,13 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
+                        shadows: [
+                          Shadow(
+                            color: Colors.black, // Shadow color
+                            offset: Offset(3, 3), // Shadow offset
+                            blurRadius: 20, // Shadow blur radius
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -230,6 +264,13 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
+                        shadows: [
+                          Shadow(
+                            color: Colors.black, // Shadow color
+                            offset: Offset(3, 3), // Shadow offset
+                            blurRadius: 20, // Shadow blur radius
+                          ),
+                        ],
                       ),
                     ),
                   ),
